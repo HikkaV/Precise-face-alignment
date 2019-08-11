@@ -1,0 +1,6 @@
+opencv-contrib-python==4.0.0.21
+opencv-python==4.0.0.21
+dlib==19.17.0
+numpy==1.16.2
+Pillow==5.2.0
+
