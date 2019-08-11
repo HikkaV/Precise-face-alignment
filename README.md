@@ -12,7 +12,7 @@ Currently two modes of algorithm are available : opencv cascade classifier mode 
 Note : dlib mode is much more precise.
 Example of a programm :
 **Original image** :
-![Alt text](https://github.com/HikkaV/Precise-face-alignment/blob/master/tiltehead.jpg?raw=true "Original image")
+![Alt text](https://github.com/HikkaV/Precise-face-alignment/blob/master/tilthead.jpg?raw=true "Original image")
 
 **Command** : 
 </pre>python run.py --mode 1 --path_to_load=tilthead.jpg --path_to_save='smth.png'<pre>
