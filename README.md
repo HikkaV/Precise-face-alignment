@@ -11,7 +11,8 @@ In order to use a programm do the following :
 Currently two modes of algorithm are available : opencv cascade classifier mode and dlib 5 facial lendmarks recognizer mode. 
 Note : dlib mode is much more precise.
 Example of a programm :
-**Original image** :
+
+**Original image** 
 ![Alt text](https://github.com/HikkaV/Precise-face-alignment/blob/master/tilthead.jpg?raw=true "Original image")
 
 
