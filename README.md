@@ -5,7 +5,7 @@ The difference between this face-alignment algorithm and others is in the fact t
 In order to use a programm do the following :
 1) Make new virtualenv and activate it: <pre>virtualenv face-alignment</pre> <pre>source face-alignment/bin/activate</pre>
 2) Clone this repo to some folder and move to it : <pre>git clone https://github.com/HikkaV/Precise-face-alignment</pre> 
-<pre>cd Precise-face-alignment/</pre>
+   <pre>cd Precise-face-alignment/</pre>
 3) Install requirments : <pre>pip install -r requirments.txt</pre>
 4) In order to get to know available commands : <pre>python run.py -h</pre>
 Currently two modes of algorithm are available : opencv cascade classifier mode and dlib 5 facial lendmarks recognizer mode. 
