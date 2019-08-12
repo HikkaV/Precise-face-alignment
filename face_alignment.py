@@ -77,7 +77,13 @@ def shape_to_normal(shape):
     return shape_normal
 
 
-def rotation_detection_dlib(img, show=False):
+def rotate_opencv(img, nose_center, angle):
+    M = cv2.getRotationMatrix2D(nose_center, angle, 1)
+    rotated = cv2.warpAffine(img, M, (img.shape[1], img.shape[0]), flags=cv2.INTER_CUBIC)
+    return rotated
+
+
+def rotation_detection_dlib(img, mode, show=False):
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor('shape_predictor_5_face_landmarks.dat')
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -104,9 +110,12 @@ def rotation_detection_dlib(img, show=False):
                 angle = np.degrees(-angle)
             else:
                 angle = np.degrees(angle)
-            img = Image.fromarray(img)
-            img = np.array(img.rotate(angle))
 
+            if mode:
+                img = rotate_opencv(img, nose, angle)
+            else:
+                img = Image.fromarray(img)
+                img = np.array(img.rotate(angle))
         if show:
             show_img(img)
         return img
@@ -114,7 +123,7 @@ def rotation_detection_dlib(img, show=False):
         return img
 
 
-def rotation_detection_opencv(img, show=False):
+def rotation_detection_opencv(img, mode, show=False):
     nose_cascade = cv2.CascadeClassifier('haarcascade_mcs_nose.xml')
     eyes_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
     fase_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -142,8 +151,11 @@ def rotation_detection_opencv(img, show=False):
         angle = np.degrees(-angle)
     else:
         angle = np.degrees(angle)
-    img = Image.fromarray(img)
-    img = np.array(img.rotate(angle))
+    if mode:
+        img = rotate_opencv(img, nose, angle)
+    else:
+        img = Image.fromarray(img)
+        img = np.array(img.rotate(angle))
     if show:
         show_img(img)
     return img
@@ -152,12 +164,11 @@ def rotation_detection_opencv(img, show=False):
 def save_img(path, img):
     cv2.imwrite(path, img)
 
+
 def face_alignment(args):
-    img=load_img(args.path_to_load)
-    if args.mode==0:
-        img=rotation_detection_opencv(img,args.show)
+    img = load_img(args.path_to_load)
+    if args.mode == 0:
+        img = rotation_detection_opencv(img, args.rotation_mode, args.show)
     else:
-        img=rotation_detection_dlib(img,args.show)
-    save_img(args.path_to_save,img)
-
-
+        img = rotation_detection_dlib(img, args.rotation_mode,args.show)
+    save_img(args.path_to_save, img)
