@@ -17,7 +17,7 @@ Example of a programm :
 
 
 **Command** : 
-</pre>python run.py --mode 1 --path_to_load=tilthead.jpg --path_to_save='smth.png'<pre>
+<pre>python run.py --mode 1 --path_to_load=tilthead.jpg --path_to_save='smth.png'</pre>
 
 **Result** :
 ![Alt text](https://github.com/HikkaV/Precise-face-alignment/blob/master/smth.png?raw=true "Result")
